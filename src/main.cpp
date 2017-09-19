@@ -2,7 +2,9 @@
  * Proyecto: Brazo Team Germán
  *
  * Descripción:
- * TODO.
+ *  Se busca desarrollar un brazo robótico basado en la estructura de
+ *  bentommye [Thingiverse] controlado por un Arduino y operado mediante un
+ *  joystick Nunchuck.
  * ------------------------------------------------------------------------- */
 #include <Arduino.h>
 #include <nunchuck.h>
@@ -19,10 +21,10 @@ void setup()
 {
 	/* Inicialización de módulos. */
     Serial.begin(9600);
-    MotoresInit();
+    motoresInit();
 
     Serial.println("Inicio del Programa:");
-	MotoresMover(90, 90, 90);
+	motoresMover(90, 90, 90);
 	delay(1000);
 
 	/* Test: Calculo de angulos y seteo de motores. */
@@ -39,7 +41,7 @@ void setup()
     Serial.println(angles.C);
 
 	/* Seteo los motores. */
-    MotoresMover(angles.A, angles.B, angles.C);
+    motoresMover(angles.A, angles.B, angles.C);
 }
 
 /* -------------------------------------------------------------------------

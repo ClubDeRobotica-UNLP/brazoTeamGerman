@@ -17,7 +17,7 @@ Servo Garra;
 /* -------------------------------------------------------------------------
  *  Función de inicialización de los motores.
  * ------------------------------------------------------------------------- */
-void MotoresInit(void)
+void motoresInit(void)
 {
 	/* Asigno los pines de cada motor. */
     Base.attach(12);
@@ -31,7 +31,7 @@ void MotoresInit(void)
  *  Función para mover los motores a los 3 angulos especificados en los
  *  argumentos.
  * ------------------------------------------------------------------------- */
-void MotoresMover(float A1,float A2,float A3)
+void motoresMover(float A1,float A2,float A3)
 {
 	/* Escribo los angulos en los motores. */
     S2.write (A1);
@@ -42,7 +42,7 @@ void MotoresMover(float A1,float A2,float A3)
 /* -------------------------------------------------------------------------
  *  Función para setear la apertura de la garra.
  * ------------------------------------------------------------------------- */
-void MotoresGarra()
+void motoresGarra()
 {
 	/* TODO */
 }
@@ -50,7 +50,7 @@ void MotoresGarra()
 /* -------------------------------------------------------------------------
  *  Función para setar el angulo de la base.
  * ------------------------------------------------------------------------- */
-void MotoresBase()
+void motoresBase()
 {
 	/* TODO */
 }

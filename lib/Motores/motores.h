@@ -9,9 +9,9 @@
 #define SRC_LIB_MOTORES_H_
 
 /* Declaración de Funciones. */
-void MotoresInit(void);
-void MotoresMover(float A1,float A2,float A3);
-void MotoresGarra();
-void MotoresBase();
+void motoresInit(void);
+void motoresMover(float A1,float A2,float A3);
+void motoresGarra();
+void motoresBase();
 
 #endif /* SRC_LIB_MOTORES_H_ */
