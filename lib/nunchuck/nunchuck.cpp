@@ -1,6 +1,13 @@
+/* -------------------------------------------------------------------------
+ * Proyecto: Brazo Team Germán
+ *
+ * Descripción:
+ * Biblioteca de funciones para interfacear el arduino con el control
+ * Nunchuck de la Wii.
+ * ------------------------------------------------------------------------- */
 #include <Arduino.h>
 #include <Wire.h>
-#include <Math.h>
+#include <math.h>
 
 #include "nunchuck.h"
 
@@ -74,4 +81,3 @@ void nunchuckGetData(void)
   nunchuckData.pitch = constrain(nunchuckData.pitch, -90, 90);
   nunchuckData.roll = nunchuckData.roll * 180.0 / M_PI;
 }
-
