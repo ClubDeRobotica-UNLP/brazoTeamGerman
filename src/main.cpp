@@ -21,27 +21,10 @@ void setup()
 {
 	/* Inicialización de módulos. */
     Serial.begin(9600);
-    motoresInit();
+    nunchuckInit();
 
+    /* Fin de la Inicialización. */
     Serial.println("Inicio del Programa:");
-	motoresMover(90, 90, 90);
-	delay(1000);
-
-	/* Test: Calculo de angulos y seteo de motores. */
-    angles = angulosCalcular(110, 120);
-
-	/* Imprimo el resultado. */
-	Serial.print("Angulo A =");
-    Serial.print(angles.A);
-
-    Serial.print(" - Angulo B =");
-    Serial.print(angles.B);
-
-    Serial.print(" - Angulo C =");
-    Serial.println(angles.C);
-
-	/* Seteo los motores. */
-    motoresMover(angles.A, angles.B, angles.C);
 }
 
 /* -------------------------------------------------------------------------
@@ -49,5 +32,29 @@ void setup()
  * ------------------------------------------------------------------------- */
 void loop()
 {
-	/* TODO */
+    /* Obtengo el estado del joystick. */
+	nunchuckGetData();
+
+    /* Imprimo los datos. */
+    Serial.print("jX: ");
+    Serial.print(nunchuckData.jX);
+    Serial.print(" | jY: ");
+    Serial.print(nunchuckData.jY);
+    Serial.print(" | aX: ");
+    Serial.print(nunchuckData.aX);
+    Serial.print(" | aY: ");
+    Serial.print(nunchuckData.aY);
+    Serial.print(" | aZ: ");
+    Serial.print(nunchuckData.aZ);
+    Serial.print(" | bC: ");
+    Serial.print(nunchuckData.cButton);
+    Serial.print(" | bZ: ");
+    Serial.print(nunchuckData.zButton);
+    Serial.print(" | Pitch: ");
+    Serial.print(nunchuckData.pitch);
+    Serial.print(" | Roll: ");
+    Serial.println(nunchuckData.roll);
+
+    /* Respiro. */
+    delay(100);
 }

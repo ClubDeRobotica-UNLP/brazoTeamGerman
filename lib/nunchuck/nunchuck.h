@@ -4,6 +4,12 @@
  * Descripción:
  * Header de la biblioteca de funciones para interfacear el arduino con el
  * control Nunchuck de la Wii.
+ *
+ * Conexiones (Nunchuck de tira de pines):
+ *     - Blanco = SCL
+ *     - Verde  = SDA
+ *     - Rojo   = 3V3
+ *     - Negro  = GND
  * ------------------------------------------------------------------------- */
 #ifndef SRC_LIB_NUNCHUCK_H_
 #define SRC_LIB_NUNCHUCK_H_
