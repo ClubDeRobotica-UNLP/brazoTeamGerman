@@ -7,12 +7,14 @@
 #include <Arduino.h>
 #include <Servo.h>
 
+#include "motores.h"
+
 /* Variables Globales. */
-Servo Base;
-Servo S2;
-Servo S3;
-Servo S4;
-Servo Garra;
+Servo Base;     /* Handler del Servo de la base.       */
+Servo S2;       /* Handler de la primera articulación. */
+Servo S3;       /* Handler de la segunda articulación. */
+Servo S4;       /* Handler de la tercera articulación. */
+Servo Garra;    /* Handler del Servo de la garra.      */
 
 /* -------------------------------------------------------------------------
  *  Función de inicialización de los motores.
@@ -25,6 +27,9 @@ void motoresInit(void)
     S3.attach(10);
     S4.attach(9);
     Garra.attach(8);
+
+    /* Seteo una posición inicial. */
+    motoresMover(90, 90, 90);
 }
 
 /* -------------------------------------------------------------------------
