@@ -13,6 +13,10 @@
 
 /* Variables Globales. */
 angulosDataType angles;
+float altura = 10.0;
+float radio = 10.0;
+float angulo = 90;
+float claw = 0;
 
 /* -------------------------------------------------------------------------
  *  Función de Inicalización del Código
@@ -35,26 +39,65 @@ void loop()
     /* Obtengo el estado del joystick. */
 	nunchuckGetData();
 
-    /* Imprimo los datos. */
-    Serial.print("jX: ");
-    Serial.print(nunchuckData.jX);
-    Serial.print(" | jY: ");
-    Serial.print(nunchuckData.jY);
-    Serial.print(" | aX: ");
-    Serial.print(nunchuckData.aX);
-    Serial.print(" | aY: ");
-    Serial.print(nunchuckData.aY);
-    Serial.print(" | aZ: ");
-    Serial.print(nunchuckData.aZ);
-    Serial.print(" | bC: ");
-    Serial.print(nunchuckData.cButton);
-    Serial.print(" | bZ: ");
-    Serial.print(nunchuckData.zButton);
-    Serial.print(" | Pitch: ");
-    Serial.print(nunchuckData.pitch);
-    Serial.print(" | Roll: ");
-    Serial.println(nunchuckData.roll);
+    /* Actualizo el angulo de la base. */
+    if (nunchuckData.jX > 200)
+    {
+        /* Aumento el ángulo de la base. */
+        angulo += 1;
+    } else if (nunchuckData.jX < 70) {
+        /* Reduzco el ángulo de la base. */
+        angulo -= 1;
+    }
+
+    /* Actualizo el valor de la garra. */
+    if ((nunchuckData.cButton == 1) && (nunchuckData.zButton == 0))
+    {
+        /* Aumento el ángulo de la base. */
+        claw += 5;
+    } else if ((nunchuckData.cButton == 0) && (nunchuckData.zButton == 1)) {
+        /* Reduzco el ángulo de la base. */
+        claw -= 5;
+    }
+    /* Ajusto el valor a los limites del servo. */
+
+    /* Actualizo el radio objetivo. */
+    if (nunchuckData.jY > 200)
+    {
+        /* Aumento el radio. */
+        radio += 1;
+    } else if (nunchuckData.jY < 70) {
+        /* Reduzco el radio. */
+        radio -= 1;
+    }
+
+    /* Actualizo la altura objetivo. */
+    if (nunchuckData.pitch > 30)
+    {
+        /* Aumento la altura. */
+        altura += 1;
+    } else if (nunchuckData.pitch < -20) {
+        /* Reduzco la altura. */
+        altura -= 1;
+    }
+
+    /* Ajusto el valor a los limites del servo. */
+    angulo = constrain(angulo, 0.0, 180.0);
+    claw   = constrain(claw, 0, 180);
+
+    /* Ajusto el valor a los limites del modelo. */
+    radio  = constrain(radio, 0.0, 180.0);
+    altura = constrain(altura, 0.0, 180.0);
+
+    /* Imprimo los valores. */
+    Serial.print("Alt: ");
+    Serial.print(altura);
+    Serial.print(" - Rad: ");
+    Serial.print(radio);
+    Serial.print(" - Ang: ");
+    Serial.print(angulo);
+    Serial.print(" - Garra: ");
+    Serial.println(claw);
 
     /* Respiro. */
-    delay(100);
+    delay(200);
 }
